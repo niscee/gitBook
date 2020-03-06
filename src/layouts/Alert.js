@@ -13,6 +13,7 @@ const Alert = ({ alert }) => {
          	</div>
                
          	)
+         
 
 
   	)
