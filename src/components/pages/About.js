@@ -11,7 +11,7 @@ const About = () => {
 
          <img src="https://www.cloudways.com/blog/wp-content/uploads/Why-ReactJS-Should-be-a-Perfect-Choice-for-Your-Next-Front-end-Application-Banner.jpg" alt='reactjs_pic'  />
         </div>
-        hello
+        
 
     )
 }
