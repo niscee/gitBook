@@ -9,7 +9,7 @@ const About = () => {
         <p><b>React router is a routing library built on top of the react which is used to create the routing in react apps.In single page apps, there is only single html page.we are reusing the same html page to render the different components based on the navigation.
            But in multipage apps, you will get an entirely new page from the server when you navigate.</b></p>
 
-         <img src="https://www.cloudways.com/blog/wp-content/uploads/Why-ReactJS-Should-be-a-Perfect-Choice-for-Your-Next-Front-end-Application-Banner.jpg"  />
+         <img src="https://www.cloudways.com/blog/wp-content/uploads/Why-ReactJS-Should-be-a-Perfect-Choice-for-Your-Next-Front-end-Application-Banner.jpg" alt='reactjs_pic'  />
         </div>
 
     )
