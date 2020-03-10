@@ -1,55 +1,41 @@
-import React, { Component } from 'react';
+import React, {  useState } from 'react';
 import PropTypes from 'prop-types';
 
 // {start ? <h1>good</h1> : <p>Not good</p>}
 // const start = true;
-class Search extends Component {
+const Search = ({ showClear,clearUsers,setAlert,searchUsers }) => {
 
- state = {
-   text:''
- };
+ const [text,setText] = useState(''); 
 
-
-static propTypes:{
-
-   searchUsers: PropTypes.func.isRequired,
-   clearUsers: PropTypes.func.isRequired,
-   setAlert: PropTypes.func.isRequired
-   
-
-}
-
- onChange = (e) => {
-    this.setState({ text: e.target.value });
+ const onChange = (e) => {
+    setText(e.target.value);
 
  }
 
- onSubmit = (e) => {
+ const onSubmit = (e) => {
     e.preventDefault();
-    if(this.state.text === '')
+    if(text === '')
     {
-      this.props.setAlert('PLEASE ENTER SOMETHING','danger');
+      setAlert('PLEASE ENTER SOMETHING','danger');
     }
     else
     {
-      this.props.searchUsers(this.state.text);
-      this.setState({text: ''});
+      searchUsers(text);
+      setText('');
     }
     
 
 
  }
 
-render(){
-
-  const { showClear, clearUsers } = this.props;
+ 
 
    return (
 
   		<div className="container" style={{marginTop:'10px'}}>
          
-         <form onSubmit={this.onSubmit}>
-           <input type="text" name="text" placeholder="Search Users..." value={this.state.text} className="form-control" onChange={this.onChange}/>
+         <form onSubmit={onSubmit}>
+           <input type="text" name="text" placeholder="Search Users..." value={text} className="form-control" onChange={onChange}/>
            <button type="submit" className="btn btn-dark btn-block btn-sm" style={{width:'100%',marginTop:'5px'}}>SEARCH</button>
          </form>
          
@@ -61,6 +47,16 @@ render(){
    	)
   }
  
+
+
+
+Search.propTypes = {
+
+   searchUsers: PropTypes.func.isRequired,
+   clearUsers: PropTypes.func.isRequired,
+   setAlert: PropTypes.func.isRequired
+   
+
 }
 
 export default Search

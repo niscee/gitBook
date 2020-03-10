@@ -10,12 +10,12 @@ const UserItem = ({user:{login, avatar_url, html_url}}) =>  {
          
          <div className="ui card col-md-3 col-sm-3 col-lg-3" style={{marginTop:'10px'}}>
           <div className="image">
-          <img src={avatar_url} style={{width:'100%'}} alt="description" />
+          <Link to={`/user/${login}`}><img src={avatar_url} style={{width:'100%'}} alt="description" /></Link>
           </div>
           <div className="content">
           <Link to={`/user/${login}`} className="header"><center>{login}</center></Link>
           <div className="description">
-              <a href={html_url} target="_blank" rel="noopener noreferrer"><center><button className="btn btn-sm btn-danger">View</button></center></a>
+              <a href={html_url} target="_blank" rel="noopener noreferrer"><center><button className="btn btn-sm btn-danger">Go To Github</button></center></a>
           </div>
           </div>
           </div>

@@ -20,9 +20,6 @@ const Navbar = ({title1,title2,title3}) => {
       <li className="nav-item">
       <Link to='/about' className="nav-link">{title2}</Link>
       </li>
-      <li className="nav-item">
-      <a className="nav-link" href="www.fb.com">{title3}</a>
-      </li>
       </ul>
       </nav>
       </div>
@@ -38,13 +35,11 @@ const Navbar = ({title1,title2,title3}) => {
     Navbar.defaultProps = {
       title1:'Home',
       title2:'About',
-      title3:'Contact'
    };
 
    Navbar.propTypes = {
       title1: PropTypes.string.isRequired,
       title2: PropTypes.string.isRequired,
-      title3: PropTypes.string.isRequired
    };
 
 

@@ -1,24 +1,19 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import Spinner from '../../Spinner.js';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-export class User extends Component{
+const User = ({user,loading,getUser,match}) => {
 
-   componentDidMount(){
-   	  this.props.getUser(this.props.match.params.login);
-   }
+    useEffect (() => {
 
-   static propTypes = {
+            getUser(match.params.login);
+            // eslint-disable-next-line
+    },[]);
 
-      loading: PropTypes.bool.isRequired,
-      user: PropTypes.object.isRequired,
-      getUser: PropTypes.func.isRequired
+ 
 
-   }
-
-  render(){
-         
+  
         const {
         	name,
         	avatar_url,
@@ -29,9 +24,9 @@ export class User extends Component{
         	following,
         	public_repos,
         	company
-        } = this.props.user;
+        } = user;
 
-        const {loading} = this.props;
+        
 
         if (loading) return <Spinner />
         
@@ -70,7 +65,13 @@ export class User extends Component{
 
     }
 
-}
 
+ User.propTypes = {
+
+      loading: PropTypes.bool.isRequired,
+      user: PropTypes.object.isRequired,
+      getUser: PropTypes.func.isRequired
+
+   }
 
 export default User
