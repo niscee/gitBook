@@ -8,24 +8,15 @@ const UserItem = ({ user: { login, avatar_url, html_url } }) => {
     return (
 
 
-        <div className="ui card col-md-6 col-sm-6 col-xs-12 col-lg-3" style={{ marginTop: '10px', padding: '10px' }}>
-            <div className="image">
-                <Link to={`/user/${login}`}><img src={avatar_url} className="img-thumbnail" style={{ Width: '100%', height:'270px' }} alt="description" /></Link>
-            </div>
-            <div className="content">
-                <Link to={`/user/${login}`} className="header"><center>{login}</center></Link>
-                <div className="description">
-                    <a href={html_url} target="_blank" rel="noopener noreferrer"><center><button className="btn btn-sm btn-outline-success btn-block">VIEW GITHUB</button></center></a>
+        <div className="col-md-6 col-sm-6 col-xs-6 col-lg-3" style={{ marginTop: '10px', padding: '10px' }}>
+          <div className="card">
+                <Link to={`/user/${login}`}><img src={avatar_url} className="img-thumbnail" style={{ Width: '400px', height: '270px' }} alt="description" /></Link>
+                <div className="card-body">
+                    <Link to={`/user/${login}`}><h4 className="card-title" style={{ textAlign:'center', color:'grey' }}>{login}</h4></Link>
+                    <p><a href={html_url} target="_blank" rel="noopener noreferrer"><button className="btn btn-sm btn-outline-success btn-block">VIEW GITHUB</button></a></p>
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
     )
 
 

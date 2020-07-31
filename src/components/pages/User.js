@@ -36,11 +36,11 @@ const User = ({ match }) => {
 	return (
 
 		<div className="container" style={{ marginTop: '20px' }}>
-			<div style={{ margin: 'auto', width: '70%' }}>
+			<div style={{ margin: 'auto', width: '80%' }}>
 				<Link to='/' className='btn btn-outline-success btn-block' style={{ marginBottom: '10px' }}>Back</Link>
 			</div>
 
-			<div className="ui raised card" style={{ margin:'auto', width:'70%', height:'550px', overflow:'scroll' }}>
+			<div className="ui raised card" style={{ margin:'auto', width:'80%', height:'550px', overflow:'scroll' }}>
 				<div className="content">
 					<div className="header" style={{ textAlign:'center' }}>{name}</div>
 					<div className="meta" style={{ marginTop: '10px' }}>
