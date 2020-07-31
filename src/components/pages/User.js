@@ -1,77 +1,82 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import Spinner from '../../Spinner.js';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import GithubContext from '../../context/github/githubContext';
 
-const User = ({user,loading,getUser,match}) => {
+const User = ({ match }) => {
 
-    useEffect (() => {
+	const githubContext = useContext(GithubContext);
 
-            getUser(match.params.login);
-            // eslint-disable-next-line
-    },[]);
+	useEffect(() => {
 
- 
+		githubContext.getUser(match.params.login);
 
-  
-        const {
-        	name,
-        	avatar_url,
-        	location,
-        	bio,
-        	login,
-        	followers,
-        	following,
-        	public_repos,
-        	company
-        } = user;
-
-        
-
-        if (loading) return <Spinner />
-        
-        return (
-            
-            <div className="container" style={{marginTop:'20px'}}> 
-            <Link to='/' className='btn btn-light'>Back To Home</Link>
-        	<div className="ui raised card" style={{margin:'auto',width:'400px',height:'300px'}}>
-        	<div className="content">
-        	<div className="header">{login}</div>
-        	<div className="meta" style={{marginTop:'10px'}}>
-        	<div className="ui red tag label">Follower:&nbsp;{followers}</div>
-            <div className="ui teal tag label">Following:&nbsp;{following}</div>
-        	</div>
-        	<div className="description" style={{marginTop:'20px'}}>
-        	<p>{bio}</p>
-        	</div>
-        	</div>
-        	<div className="extra content">
-        	<div className="left floated author">
-        	<p>Public_repos:{public_repos}</p>
-        	<p>Company:{company}</p>
-        	<p>Location:{location}</p>
-        	</div>
-        	<div className="right floated author">
-        	<img className="ui avatar image" src={avatar_url} style={{width:'60px',height:'60px'}} alt='user_profile' />{name}
-        	</div>
-        	</div>
-        	</div>
-        	</div>
+	}, []);
 
 
 
-        	)
-               
 
-    }
+	const {
+		name,
+		avatar_url,
+		location,
+		bio,
+		login,
+		followers,
+		following,
+		public_repos,
+		company
+	} = githubContext.user;
 
 
- User.propTypes = {
+    const company_name = company
+	if (githubContext.loading) return <Spinner />
 
-      loading: PropTypes.bool.isRequired,
-      user: PropTypes.object.isRequired,
-      getUser: PropTypes.func.isRequired
+	return (
 
-   }
+		<div className="container" style={{ marginTop: '20px' }}>
+			<div style={{ margin: 'auto', width: '70%' }}>
+				<Link to='/' className='btn btn-outline-success btn-block' style={{ marginBottom: '10px' }}>Back</Link>
+			</div>
+
+			<div className="ui raised card" style={{ margin:'auto', width:'70%', height:'550px', overflow:'scroll' }}>
+				<div className="content">
+					<div className="header" style={{ textAlign:'center' }}>{name}</div>
+					<div className="meta" style={{ marginTop: '10px' }}>
+						<img className="ui avatar image center" src={avatar_url} style={{ width:'300px', height:'300px', margin:'auto', display:'block' }} alt='user_profile' />
+					</div>
+					<div className="description" style={{ marginTop:'20px' }}>
+						<p style={{textAlign:'center'}}>{bio}</p>
+					</div>
+				</div>
+				<div className="extra content">
+					<div className="left floated author" style={{ fontWeight:'bold' }}>
+						<p>Public Repos:&nbsp;&nbsp;{public_repos}</p>
+	                    <p>Company:&nbsp;&nbsp;{ !company_name && ("N/A") }{company}</p>
+						<p>Location:&nbsp;&nbsp;{location}</p>
+					</div>
+					<div className="right floated author">
+						<div className="ui red tag label" style={{display:'block'}}>Follower:&nbsp;{followers}</div>
+						<div className="ui teal tag label" style={{display:'block', marginTop:'5px'}}>Following:&nbsp;{following}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+	)
+
+
+}
+
+
+User.propTypes = {
+
+	// loading: PropTypes.bool.isRequired,
+
+
+}
 
 export default User

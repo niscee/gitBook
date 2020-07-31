@@ -7,9 +7,9 @@ const Navbar = ({title1,title2,title3}) => {
  return (
     
     <div>
-      <nav className="navbar navbar-expand-sm bg-warning navbar-warning">
+      <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
       <a className="navbar-brand" href="www.fb.com">
-      <img src="https://i.pinimg.com/600x315/2c/b6/70/2cb670b6ddd8922a1c1b2fee4f6f758c.jpg" alt="description" style={{width:'60px'}} />
+      <img src="https://i.pinimg.com/600x315/2c/b6/70/2cb670b6ddd8922a1c1b2fee4f6f758c.jpg" className="rounded" alt="description" style={{width:'60px'}} />
       </a>
 
       
